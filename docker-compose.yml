@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  statcan-transit-mcp:
+    build: .
+    container_name: statcan-transit-mcp
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/app/data
+      - ./cache:/app/cache
+    environment:
+      - FASTMCP_LOG_LEVEL=INFO
+    stdin_open: true
+    tty: true
+
+
